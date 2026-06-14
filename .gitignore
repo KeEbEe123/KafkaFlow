@@ -1,0 +1,25 @@
+# Binaries
+bin/
+*.exe
+
+# Data directories (runtime state)
+data/
+logs/
+
+# Go
+go.sum
+
+# Node / frontend
+web/node_modules/
+web/dist/
+
+# macOS
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Test cache
+/tmp/
