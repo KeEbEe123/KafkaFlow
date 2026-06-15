@@ -1,0 +1,21 @@
+broker:
+  id: 2
+  grpc_addr: "0.0.0.0:9094"
+  raft_addr: "0.0.0.0:9097"
+  ws_addr: "0.0.0.0:9098"
+
+cluster:
+  peers:
+    - id: 1
+      addr: "localhost:9092"
+    - id: 3
+      addr: "localhost:9096"
+
+storage:
+  data_dir: "./data/broker2"
+  segment_max_bytes: 67108864
+  retention_hours: 168
+
+consumer_group:
+  session_timeout_ms: 30000
+  heartbeat_interval_ms: 3000

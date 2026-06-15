@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  broker1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["/app/broker", "-config", "/etc/kafkaflow/broker1.yaml"]
+    ports:
+      - "9092:9092"   # gRPC
+      - "9095:9095"   # WebSocket / dashboard
+    volumes:
+      - ./configs/broker1.yaml:/etc/kafkaflow/broker1.yaml
+      - broker1-data:/var/lib/kafkaflow
+    networks: [kafkanet]
+
+  broker2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["/app/broker", "-config", "/etc/kafkaflow/broker2.yaml"]
+    ports:
+      - "9094:9094"
+      - "9098:9098"
+    volumes:
+      - ./configs/broker2.yaml:/etc/kafkaflow/broker2.yaml
+      - broker2-data:/var/lib/kafkaflow
+    networks: [kafkanet]
+
+  broker3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["/app/broker", "-config", "/etc/kafkaflow/broker3.yaml"]
+    ports:
+      - "9096:9096"
+      - "9100:9100"
+    volumes:
+      - ./configs/broker3.yaml:/etc/kafkaflow/broker3.yaml
+      - broker3-data:/var/lib/kafkaflow
+    networks: [kafkanet]
+
+volumes:
+  broker1-data:
+  broker2-data:
+  broker3-data:
+
+networks:
+  kafkanet:
+    driver: bridge
