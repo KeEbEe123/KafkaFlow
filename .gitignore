@@ -1,13 +1,14 @@
 # Binaries
 bin/
 *.exe
+broker
+cli
 
 # Data directories (runtime state)
 data/
 logs/
 
 # Go
-go.sum
 
 # Node / frontend
 web/node_modules/
